@@ -23,8 +23,12 @@ app.get("/", (req, res) => {
 });
 
 const routeAuth = require("./src/routes/auth");
+const routeUsers = require("./src/routes/users");
+const routeContacts = require("./src/routes/contacts");
 
 app.use("/auth", routeAuth);
+app.use("/users", routeUsers);
+app.use("/contacts", routeContacts);
 
 app.listen(port, () => {
   console.log("App running ini port 8080");

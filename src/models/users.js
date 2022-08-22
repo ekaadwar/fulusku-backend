@@ -20,10 +20,22 @@ exports.createUsers = (data, cb) => {
   );
 };
 
+exports.getUserById = (id, cb) => {
+  console.log(id);
+  connection.query(
+    `SELECT id, photo, name, email, phone FROM ${table} WHERE id=${id}`,
+    cb
+  );
+};
+
 exports.getUserByPhone = (phone, cb) => {
   connection.query(
-    `SELECT id, phone, pin FROM users WHERE phone=?`,
+    `SELECT id, phone, pin, photo FROM users WHERE phone=?`,
     [phone],
     cb
   );
+};
+
+exports.getUserRole = (id, cb) => {
+  connection.query(`SELECT role FROM ${table} WHERE id=?`, [id], cb);
 };
